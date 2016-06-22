@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <title>Login</title>
+  </head>
+  <body>
+    <h3>Register</h3>
+    <form action="/login/register" method="post">
+      {% csrf_token %}
+      <label for="first_name">First Name:<input type="text" name="first_name"></label>
+      <label for="last_name">Last Name:<input type="text" name="last_name"></label>
+      <label for="email">Email:<input type="email" name="email"></label>
+      <label for="password">Password:<input type="password" name="password"></label>
+      <label for="confirm_password">Confirm Password:<input type="password" name="confirm_password"></label>
+      <label for="submit"><input type="submit" name="submit" value="Register"></label>
+    </form>
+    {% for key, value in errors.items %}
+      <label>{{value}}</label>
+    {% endfor %}
+    <hr>
+    <h3>Log In</h3>
+    <form action="/login/login" method="post">
+      {% csrf_token %}
+      <label for="email">Email:<input type="email" name="email"></label>
+      <label for="password">Password:<input type="password" name="password"></label>
+      <label for="submit"><input type="submit" name="submit" value="Log In"></label>
+    </form>
+  </body>
+</html>
